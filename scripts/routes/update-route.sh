@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl "http://localhost:4741/routes/2" \
+curl "http://localhost:4741/routes/${ID}" \
   --include \
   --request PATCH \
   --header "Content-Type: application/json" \

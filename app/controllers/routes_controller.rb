@@ -1,4 +1,4 @@
-class RoutesController < ApplicationController
+class RoutesController < OpenReadController
   before_action :set_route, only: [:show, :update, :destroy]
 
   # GET /routes
@@ -15,7 +15,7 @@ class RoutesController < ApplicationController
 
   # POST /routes
   def create
-    @route = Route.new(route_params)
+    @route = current_user.routes.build(route_params)
 
     if @route.save
       render json: @route, status: :created, location: @route
@@ -41,7 +41,7 @@ class RoutesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_route
-      @route = Route.find(params[:id])
+      @route = current_user.routes.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
