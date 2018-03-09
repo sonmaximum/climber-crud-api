@@ -14,6 +14,48 @@ class RoutesController < OpenReadController
     render json: @route
   end
 
+  # GET /routes/type/1
+  def getbytype
+    @routes = Route.select { |route| route.route_type == params[:id] }
+    render json: @routes
+  end
+
+  # GET /getmyroutes
+  def getmyroutes
+    @routes = current_user.routes.all
+    render json: @routes
+  end
+
+  # GET /getmyroutes/type/1
+  def getmyroutesbytype
+    @routes = current_user.routes.select { |route| route.route_type == params[:id] }
+    render json: @routes
+  end
+
+  # GET /routes/attempted
+  def getattempted
+    @routes = current_user.routes.select{ |route| route.attempted }
+    render json: @routes
+  end
+
+  # GET /routes/completed
+  def getcompleted
+    @routes = current_user.routes.select(&:completed)
+    render json: @routes
+  end
+
+  # GET /routes/sent
+  def getsent
+    @routes = current_user.routes.select(&:sent)
+    render json: @routes
+  end
+
+  # GET /routes/projects
+  def getprojects
+    @routes = current_user.routes.select(&:project)
+    render json: @routes
+  end
+
   # POST /routes
   def create
     @route = current_user.routes.build(route_params)
@@ -40,13 +82,14 @@ class RoutesController < OpenReadController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_route
-      @route = current_user.routes.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def route_params
-      params.require(:route).permit(:name, :rating, :location, :user_id, :route_type, :outdoors, :attempted, :completed, :sent, :project, :hangs, :comments, :color)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_route
+    @route = current_user.routes.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def route_params
+    params.require(:route).permit(:name, :rating, :location, :user_id, :route_type, :outdoors, :attempted, :completed, :sent, :project, :hangs, :comments, :color)
+  end
 end
