@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   get '/routes/type/:id' => 'routes#getbytype'
   get '/myroutes/type/:id' => 'routes#getmyroutesbytype'
   get '/myroutes' => 'routes#getmyroutes'
-  get '/routes/attempted' => 'routes#getattempted'
-  get '/routes/completed' => 'routes#getcompleted'
-  get '/routes/sent' => 'routes#getsent'
-  get '/routes/projects' => 'routes#getprojects'
+  get '/routes/attempted/:id' => 'routes#getattempted'
+  get '/routes/completed/:id' => 'routes#getcompleted'
+  get '/routes/sent/:id' => 'routes#getsent'
+  get '/routes/projects/:id' => 'routes#getprojects'
   resources :routes, except: %i[new edit]
 
   # Custom routes

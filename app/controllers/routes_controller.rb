@@ -34,25 +34,41 @@ class RoutesController < OpenReadController
 
   # GET /routes/attempted
   def getattempted
-    @routes = current_user.routes.select{ |route| route.attempted }
+    if params[:id].to_i.zero?
+      @routes = current_user.routes.reject(&:attempted)
+    else
+      @routes = current_user.routes.select(&:attempted)
+    end
     render json: @routes
   end
 
   # GET /routes/completed
   def getcompleted
-    @routes = current_user.routes.select(&:completed)
+    if params[:id].to_i.zero?
+      @routes = current_user.routes.reject(&:completed)
+    else
+      @routes = current_user.routes.select(&:completed)
+    end
     render json: @routes
   end
 
   # GET /routes/sent
   def getsent
-    @routes = current_user.routes.select(&:sent)
+    if params[:id].to_i.zero?
+      @routes = current_user.routes.reject(&:sent)
+    else
+      @routes = current_user.routes.select(&:sent)
+    end
     render json: @routes
   end
 
   # GET /routes/projects
   def getprojects
-    @routes = current_user.routes.select(&:project)
+    if params[:id].to_i.zero?
+      @routes = current_user.routes.reject(&:project)
+    else
+      @routes = current_user.routes.select(&:project)
+    end
     render json: @routes
   end
 
