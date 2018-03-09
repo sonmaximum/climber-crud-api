@@ -1,5 +1,5 @@
 class RoutesController < OpenReadController
-  before_action :set_route, only: [:show, :update, :destroy]
+  before_action :set_route, only: [:update, :destroy]
 
   # GET /routes
   def index
@@ -10,6 +10,7 @@ class RoutesController < OpenReadController
 
   # GET /routes/1
   def show
+    @route = Route.find(params[:id])
     render json: @route
   end
 
