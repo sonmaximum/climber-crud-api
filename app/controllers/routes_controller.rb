@@ -1,5 +1,7 @@
+# frozen_string_literal:true
+
 class RoutesController < OpenReadController
-  before_action :set_route, only: [:update, :destroy]
+  before_action :set_route, only: %i[update destroy]
 
   # GET /routes
   def index
@@ -28,47 +30,48 @@ class RoutesController < OpenReadController
 
   # GET /getmyroutes/type/1
   def getmyroutesbytype
-    @routes = current_user.routes.select { |route| route.route_type == params[:id] }
+    @routes =
+      current_user.routes.select { |route| route.route_type == params[:id] }
     render json: @routes
   end
 
   # GET /routes/attempted
   def getattempted
-    if params[:id].to_i.zero?
-      @routes = current_user.routes.reject(&:attempted)
-    else
-      @routes = current_user.routes.select(&:attempted)
-    end
+    @routes = if params[:id].to_i.zero?
+                current_user.routes.reject(&:attempted)
+              else
+                current_user.routes.select(&:attempted)
+              end
     render json: @routes
   end
 
   # GET /routes/completed
   def getcompleted
-    if params[:id].to_i.zero?
-      @routes = current_user.routes.reject(&:completed)
-    else
-      @routes = current_user.routes.select(&:completed)
-    end
+    @routes = if params[:id].to_i.zero?
+                current_user.routes.reject(&:completed)
+              else
+                current_user.routes.select(&:completed)
+              end
     render json: @routes
   end
 
   # GET /routes/sent
   def getsent
-    if params[:id].to_i.zero?
-      @routes = current_user.routes.reject(&:sent)
-    else
-      @routes = current_user.routes.select(&:sent)
-    end
+    @routes = if params[:id].to_i.zero?
+                current_user.routes.reject(&:sent)
+              else
+                current_user.routes.select(&:sent)
+              end
     render json: @routes
   end
 
   # GET /routes/projects
   def getprojects
-    if params[:id].to_i.zero?
-      @routes = current_user.routes.reject(&:project)
-    else
-      @routes = current_user.routes.select(&:project)
-    end
+    @routes = if params[:id].to_i.zero?
+                current_user.routes.reject(&:project)
+              else
+                current_user.routes.select(&:project)
+              end
     render json: @routes
   end
 
@@ -106,6 +109,9 @@ class RoutesController < OpenReadController
 
   # Only allow a trusted parameter "white list" through.
   def route_params
-    params.require(:route).permit(:name, :rating, :location, :user_id, :route_type, :outdoors, :attempted, :completed, :sent, :project, :hangs, :comments, :color)
+    params.require(:route).permit(:name, :rating, :location, :user_id,
+                                  :route_type, :outdoors, :attempted,
+                                  :completed, :sent, :project, :hangs,
+                                  :comments, :color)
   end
 end
