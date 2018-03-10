@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/routes/completed/:id' => 'routes#getcompleted'
   get '/routes/sent/:id' => 'routes#getsent'
   get '/routes/projects/:id' => 'routes#getprojects'
+  get '/maintainedlocations/' => 'locations#getmaintained'
   resources :routes, except: %i[new edit]
 
   # Custom routes
