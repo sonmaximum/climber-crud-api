@@ -19,13 +19,13 @@ class RoutesController < OpenReadController
   # GET /routes/type/1
   def getbytype
     @routes = Route.select { |route| route.route_type == params[:id] }
-    render json: @routes
+    render json: @routes, root: :routes
   end
 
   # GET /routes/location/1
   def getbylocation
-    @routes = Route.select { |route| route.location_id == params[:id] }
-    render json: @routes
+    @routes = Route.select { |route| route.location_id == params[:id].to_i }
+    render json: @routes, root: :routes
   end
 
   # GET /getmyroutes
@@ -38,14 +38,14 @@ class RoutesController < OpenReadController
   def getmyroutesbytype
     @routes =
       current_user.routes.select { |route| route.route_type == params[:id] }
-    render json: @routes
+    render json: @routes, root: :routes
   end
 
   # GET /myroutes/location/1
   def getmyroutesbylocation
     @routes =
-      current_user.routes.select { |route| route.location_id == params[:id] }
-    render json: @routes
+      current_user.routes.select { |route| route.location_id == params[:id].to_i }
+    render json: @routes, root: :routes
   end
 
   # GET /routes/attempted
