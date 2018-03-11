@@ -109,9 +109,8 @@ class RoutesController < OpenReadController
 
   # Only allow a trusted parameter "white list" through.
   def route_params
-    params.require(:route).permit(:name, :rating, :location, :user_id,
-                                  :route_type, :outdoors, :attempted,
-                                  :completed, :sent, :project, :hangs,
-                                  :comments, :color)
+    params.require(:route).permit(:name, :rating, :location_id, :user_id,
+                                  :route_type, :attempted, :completed, :sent,
+                                  :project, :hangs, :comments, :color)
   end
 end

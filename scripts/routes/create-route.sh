@@ -9,10 +9,9 @@ curl "http://localhost:4741/routes" \
     "route": {
       "name": "'"AutotestRoute"'",
       "rating": "'"5.9"'",
-      "location": "'"BKB"'",
+      "location_id": "'"17"'",
       "user_id": "1",
       "route_type": "'"top"'",
-      "outdoors": "'"false"'",
       "attempted": "'"false"'",
       "completed": "'"false"'",
       "sent": "'"false"'",

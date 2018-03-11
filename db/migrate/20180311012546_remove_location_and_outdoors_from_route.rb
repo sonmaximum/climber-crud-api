@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveLocationAndOutdoorsFromRoute < ActiveRecord::Migration[5.1]
   def change
     remove_column :routes, :outdoors, :boolean
