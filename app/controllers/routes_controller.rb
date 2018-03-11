@@ -22,6 +22,12 @@ class RoutesController < OpenReadController
     render json: @routes
   end
 
+  # GET /routes/location/1
+  def getbylocation
+    @routes = Route.select { |route| route.location_id == params[:id] }
+    render json: @routes
+  end
+
   # GET /getmyroutes
   def getmyroutes
     @routes = current_user.routes.all
@@ -32,6 +38,13 @@ class RoutesController < OpenReadController
   def getmyroutesbytype
     @routes =
       current_user.routes.select { |route| route.route_type == params[:id] }
+    render json: @routes
+  end
+
+  # GET /myroutes/location/1
+  def getmyroutesbylocation
+    @routes =
+      current_user.routes.select { |route| route.location_id == params[:id] }
     render json: @routes
   end
 

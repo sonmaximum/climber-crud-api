@@ -9,12 +9,15 @@ Rails.application.routes.draw do
   # Custom Route routes goodjob naming
   get '/routes/type/:id' => 'routes#getbytype'
   get '/myroutes/type/:id' => 'routes#getmyroutesbytype'
+  get '/myroutes/location/:id' => 'routes#getmyroutesbylocation'
   get '/myroutes' => 'routes#getmyroutes'
+  get '/routes/location/:id' => 'routes#getbylocation'
   get '/routes/attempted/:id' => 'routes#getattempted'
   get '/routes/completed/:id' => 'routes#getcompleted'
   get '/routes/sent/:id' => 'routes#getsent'
   get '/routes/projects/:id' => 'routes#getprojects'
   get '/maintainedlocations/' => 'locations#getmaintained'
+  get '/mylocations/' => 'locations#getclimbedat'
   resources :routes, except: %i[new edit]
 
   # Custom routes

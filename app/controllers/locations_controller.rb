@@ -23,6 +23,13 @@ class LocationsController < OpenReadController
     render json: @locations
   end
 
+  # get /mylocations/
+
+  def getclimbedat
+    @locations = current_user.locations.all
+    render json: @locations
+  end
+
   # POST /locations
   def create
     @location = current_user.maintained_locations.build(location_params)
