@@ -6,6 +6,9 @@ class Location < ApplicationRecord
              foreign_key: 'user_id',
              inverse_of: 'maintained_locations'
 
+  has_many :routes
+  has_many :users, -> { distinct }, through: :routes
+
   validates :name, presence: true
   validates :address, presence: true
   validates :maintainer, presence: true
