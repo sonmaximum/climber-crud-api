@@ -7,7 +7,7 @@ class RoutesController < OpenReadController
   def index
     @routes = Route.all
 
-    render json: @routes
+    render json: @routes, root: :routes
   end
 
   # GET /routes/1
@@ -31,7 +31,7 @@ class RoutesController < OpenReadController
   # GET /getmyroutes
   def getmyroutes
     @routes = current_user.routes.all
-    render json: @routes
+    render json: @routes, root: :routes
   end
 
   # GET /getmyroutes/type/1
@@ -55,7 +55,7 @@ class RoutesController < OpenReadController
               else
                 current_user.routes.select(&:attempted)
               end
-    render json: @routes
+    render json: @routes, root: :routes
   end
 
   # GET /routes/completed
@@ -65,7 +65,7 @@ class RoutesController < OpenReadController
               else
                 current_user.routes.select(&:completed)
               end
-    render json: @routes
+    render json: @routes, root: :routes
   end
 
   # GET /routes/sent
@@ -75,7 +75,7 @@ class RoutesController < OpenReadController
               else
                 current_user.routes.select(&:sent)
               end
-    render json: @routes
+    render json: @routes, root: :routes
   end
 
   # GET /routes/projects
@@ -85,7 +85,7 @@ class RoutesController < OpenReadController
               else
                 current_user.routes.select(&:project)
               end
-    render json: @routes
+    render json: @routes, root: :routes
   end
 
   # POST /routes

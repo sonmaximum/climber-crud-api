@@ -15,35 +15,35 @@ Location.create(
       name: 'Brooklyn Boulders Somerville',
       address: '12A Tyler St, Somerville, MA 02143',
       outdoors: false,
-      comments: 'none',
+      comments: 'None',
       maintainer: User.first
     },
     {
       name: 'Central Rock Gym Watertown',
       address: '74 Acton St, Watertown, MA 02472',
       outdoors: false,
-      comments: 'none',
+      comments: 'None',
       maintainer: User.first
     },
     {
       name: 'Central Rock Gym Alewife',
       address: '127 Smith Pl, Cambridge, MA 02138',
       outdoors: false,
-      comments: 'none',
+      comments: 'None',
       maintainer: User.first
     },
     {
       name: 'Quincy Quarries',
       address: 'Ricciuti Dr, Quincy, MA 02169',
       outdoors: true,
-      comments: 'none',
+      comments: 'None',
       maintainer: User.first
     },
     {
       name: 'Shawangunk Ridge (The Gunks)',
       address: 'New Paltz, New York',
       outdoors: true,
-      comments: 'none',
+      comments: 'None',
       maintainer: User.first
     }
   ]

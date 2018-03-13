@@ -7,7 +7,7 @@ class LocationsController < OpenReadController
   def index
     @locations = Location.all
 
-    render json: @locations
+    render json: @locations, root: :locations
   end
 
   # GET /locations/1
@@ -20,14 +20,14 @@ class LocationsController < OpenReadController
 
   def getmaintained
     @locations = current_user.maintained_locations.all
-    render json: @locations
+    render json: @locations, root: :locations
   end
 
   # get /mylocations/
 
   def getclimbedat
     @locations = current_user.locations.all
-    render json: @locations
+    render json: @locations, root: :locations
   end
 
   # POST /locations
