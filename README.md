@@ -1,6 +1,6 @@
 # Project Overview
 
-The code in this repository (deployed [here](https://climber-crud-api.herokuapp.com/), along with the corresponding front-end client (repo [here](https://github.com/sonmaximum/climber-crud), comprise the app [Climber CRUD](https://sonmaximum.github.io/climber-crud/), a Climbing Route User Database.  The app is designed to allow rock climbing hobbyists to track locations at which they have climbed and climbing routes they have completed.  It uses a database of three resource tables and the relationships between them to allow users to perform standard Create-Read-Update-Destroy actions for climbing routes and locations.
+The code in this repository (deployed [here](https://climber-crud-api.herokuapp.com/), along with the corresponding front-end client (repo [here](https://github.com/sonmaximum/climber-crud)), comprise the app [Climber CRUD](https://sonmaximum.github.io/climber-crud/), a Climbing Route User Database.  The app is designed to allow rock climbing hobbyists to track locations at which they have climbed and climbing routes they have completed.  It uses a database of three resource tables and the relationships between them to allow users to perform standard Create-Read-Update-Destroy actions for climbing routes and locations.
 
 ## Technologies Used
 
